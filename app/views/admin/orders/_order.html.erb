@@ -1,0 +1,21 @@
+<tr class="active">
+  <td><%= order.id %></td>
+  <td><%= order.user.name %></td>
+  <td><%= order.name %></td>
+  <td><%= order.address %></td>
+  <td><%= order.phone_number %></td>
+  <td><%= order.delivery_time %></td>
+  <td><%= order.status %></td>
+  <td><%= number_to_currency cal_total_order(order) %></td>
+  <td>
+    <% if order.waiting? %>
+      <%= link_to t("order.accept"), admin_order_path(id: order.id, status: Order.statuses[:accepted]), method: :patch, class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>
+      <%= link_to t("order.refuse"), admin_order_path(id: order.id, status: Order.statuses[:refused]), method: :patch, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+    <% elsif order.accepted? %>
+      <%= link_to t("order.refuse"), admin_order_path(id: order.id, status: Order.statuses[:refused]), method: :patch, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+      <%= link_to t("order.shipping"), admin_order_path(id: order.id, status: Order.statuses[:shipping]), method: :patch, class: "btn btn-info" %>
+    <% elsif order.refused? %>
+      <%= link_to t("order.accept"), admin_order_path(id: order.id, status: Order.statuses[:accepted]), method: :patch, class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>
+    <% end %>
+  </td>
+</tr>

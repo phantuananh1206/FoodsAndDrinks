@@ -1,0 +1,35 @@
+<tr>
+  <td>
+    <div class="product-item" id="product_item_<%=order.product.id %>">
+      <%= link_to @product do %>
+        <%= load_image_product @product %>
+      <% end %>
+      <div class="product-info">
+      <h4 class="product-title">
+        <%= link_to order.product_name, "#" %>
+      </h4>
+      <span><em><%= link_to order.product.category_name, "#" %></em></span>
+      <span><em><%= t "carts.in_stock" %></em> <%= order.product_quantity %></span>
+      </div>
+    </div>
+  </td>
+  <td class="text-center">
+  <div class="card custom-quantity">
+    <div class="count-input">
+      <%= form_tag(cart_path(@product.id), method: :patch, class: "form-a", remote: true) do  %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag(:product_id, order.product.id, class: "p-id") %>
+        <%= number_field_tag(:quantity, order.quantity.to_i, min: Settings.product.min_quantity, max: order.product.quantity, class: "form-control mb-5 input-lg ajax-input",id: "ajax-input") %>
+      <% end %>
+    </div>
+  </div>
+  </td>
+  <td class="text-center text-lg text-medium"><strong><%= number_to_currency order.price %></strong></td>
+  <td class="text-center text-lg text-medium" id="sub_total"><%= number_to_currency (subtotal order.price, order.quantity) %></td>
+  <td class="text-center">
+    <%= link_to cart_path(order.product.id), {data: {confirm: t("carts.verify")}, class: "btn btn-danger", method: :delete, remote: true} do %>
+      <i class="fa fa-trash"></i>
+    <% end %>
+  </td>
+</tr>
+<%= javascript_pack_tag 'update.js' %>

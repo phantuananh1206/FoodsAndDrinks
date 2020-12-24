@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="container-fliud">
+    <div class="wrapper row">
+      <div class="preview col-md-6">
+        <div class="preview-pic tab-content">
+          <div class="tab-pane active" id="pic-1">
+            <%= load_image_product @product %>
+          </div>
+        </div>
+      </div>
+      <div class="details col-md-6">
+        <h1 class="product-title"><%= @product.name %></h1>
+        <div class="rating">
+          <div class="star-rating mb-2">
+            <div class="star-rating-front" style="width: <%= @product.rating_percentage %>%; height: 23px;">★★★★★</div>
+            <div class="star-rating-back">★★★★★</div>
+            <small>(<%= @product.ratings.count %> <%= t("ratings.reviews") %>)</small>
+          </div>
+        </div>
+        <h5 class="product-description">
+          <%= @product.description %>
+        </h5>
+        <h4 class="price">
+          <%= t "product_detail.price" %>
+          <span><%= number_to_currency @product.price %></span>
+        </h4>
+        <h5 class="quanlity"><%= t "product_detail.stock" %>
+          <%= @product.quantity %><%= t "product_detail.p" %>
+        </h5>
+        <h5>
+          <%= t "product_detail.quantity" %>
+        </h5>
+        <div class="action">
+          <%= form_tag(carts_path, method: :post, remote: true) do  %>
+            <%= hidden_field_tag(:product_id, @product.id) %>
+            <%= number_field_tag(:quantity, Settings.product.min_quantity, min: Settings.product.min_quantity, max: @product.quantity, class: "form-control mb-5 input-lg") %>
+            <%= button_tag(type: "submit", class: "add-to-cart-detail btn-default") do %>
+              <i class="fa fa-shopping-cart"> <%= t("product.add_to_cart") %></i>
+            <% end %>
+          <% end %>
+          <%= render "ratings/form", rating: @rating, product: @product %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

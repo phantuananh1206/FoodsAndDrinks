@@ -1,0 +1,4 @@
+$('.cart').html('<%= j render "carts/cart_text" %>');
+$('#product_item_<%= @id %>').closest('input').val(parseInt("<%= @quantity %>"))
+$('#product_item_<%= @id %>').parent().parent().find("#sub_total")[0].innerHTML = "<%= number_to_currency @subtotal %>"
+$('.total_price').html('<%= number_to_currency @total_price %>')

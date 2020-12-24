@@ -1,0 +1,4 @@
+page:
+  per_page: 8
+product:
+  min_quantity: 1

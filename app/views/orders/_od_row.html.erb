@@ -1,0 +1,25 @@
+<tr class="font-size" >
+  <div class="media">
+    <td class="col-md-3">
+      <div class="media-body">
+        <p class="">
+          <%= link_to od.product.name, od.product %>
+        </p>
+      </div>
+    </td>
+  </div>
+
+  <td class="col-md-3 text-center">
+   <strong><%= od.quantity %></strong>
+  </td>
+
+  <td class="col-md-3 text-center">
+    <strong><%= number_to_currency od.price %></strong>
+  </td>
+
+ <td class="col-md-3 text-center">
+    <strong>
+      <%= number_to_currency (subtotal od.price, od.quantity) %>
+    </strong>
+  </td>
+</tr>

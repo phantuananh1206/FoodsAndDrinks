@@ -1,0 +1,33 @@
+<div class="container padding-bottom-3x mb-1">
+  <%= render "shared/error_messages", object: @order_detail %>
+  <div class="table-responsive shopping-cart">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center"><%= t "carts.product_name" %></th>
+          <th class="text-center"><%= t "carts.quantity" %></th>
+          <th class="text-center"><%= t "carts.price" %></th>
+          <th class="text-center"><%= t "carts.subtotal" %></th>
+          <th class="text-center"><%=link_to t("carts.clear_cart"),clear_cart_path, class: "btn btn-sm btn-outline-danger" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <div class= "cart_item">
+          <%= render(partial: "carts/cart_row", collection: @order_details, as: "order") || t("carts.nil")%>
+        </div>
+      </tbody>
+    </table>
+  </div>
+  <div class="shopping-cart-footer">
+  <div class="column text-lg"><%= t "carts.total_price" %> <span class="text-medium"><strong class="total_price"><%= number_to_currency @total_price %></strong></span></div>
+  </div>
+  <div class="shopping-cart-footer">
+    <div class="column">
+      <%= link_to t("carts.back_to"), root_path, class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="column"><a class="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!"><%= t "carts.update_cart" %></a><%= link_to new_order_path, class: "btn btn-success" do%>
+        <%= t "carts.checkout" %>
+      <% end %>
+    </div>
+  </div>
+</div>

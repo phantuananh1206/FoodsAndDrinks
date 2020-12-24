@@ -1,0 +1,5 @@
+<ul>
+  <br>
+  <%= link_to t("order.back"), user_order_path(current_user,@order), class: "btn btn-info" %>
+  <%= render @order_details %>
+</ul>

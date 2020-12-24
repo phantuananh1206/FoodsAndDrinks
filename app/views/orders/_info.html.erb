@@ -1,0 +1,22 @@
+<%= form_for(@order) do |f| %>
+  <%= render "shared/error_messages", object: @order %>
+  <div class="row">
+    <div class="col-50">
+      <%= f.label :title, t("orders.info_ship.title_info"), class: "title-order" %>
+      <hr>
+      <%= f.label :name, t("orders.info_ship.name") %>
+      <%= f.text_field :name, class: "form-control", value: current_user.name %>
+      <%= f.label :email, t("orders.info_ship.email"), class: "info-add" %>
+      <%= f.email_field :email, class: "form-control", value: current_user.email %>
+      <%= f.label :address, t("orders.info_ship.address"), class: "info-add" %>
+      <%= f.text_field :address, class: "form-control", value: current_user.address %>
+      <%= f.label :phone_number, t("orders.info_ship.phone_number"), class: "info-add" %>
+      <%= f.telephone_field :phone_number, class: "form-control", value: current_user.phone_number %>
+      <div class="time-delivey">
+        <%= f.label :delivery_time, t("orders.info_ship.delivery_time"), class:"delivery" %>
+        <%= f.date_field(:delivery_time, {min: Date.today, value: Date.today}) %>
+      </div>
+      <%= f.submit yield(:button_text), class: "btn-checkout" %>
+    </div>
+  </div>
+<% end %>

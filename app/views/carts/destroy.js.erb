@@ -1,0 +1,3 @@
+$('#product_item_<%= @id %>').closest('tr').html('')
+$('.cart').html('<%= j render "carts/cart_text" %>');
+$('.total_price').html('<%= number_to_currency @total_price %>')

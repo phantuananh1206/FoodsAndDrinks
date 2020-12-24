@@ -1,0 +1,99 @@
+@import "bootstrap";
+@import "font-awesome";
+
+$black_color: black;
+$white_color: #fff;
+$border-color: #e1e6ef;
+$text-color: #151b1e;
+
+/* Header */
+.logo {
+  font-size: 25px !important;
+}
+
+.nav-link {
+  font-size: 15px;
+  margin: 0px 5px;
+}
+
+.dropdown-item {
+  font-size: 15px;
+  color: $black_color;
+}
+
+/* dashboard */
+.email-app {
+  display: flex;
+  flex-direction: row;
+  background: $white_color;
+  border: 1px solid $border-color;
+}
+
+.email-app nav {
+  flex: 0 0 250px;
+  padding: 1rem;
+  border-right: 1px solid $border-color;
+}
+
+.email-app nav .btn-block {
+  margin-bottom: 15px;
+}
+
+.email-app nav .nav {
+  flex-direction: column;
+}
+
+.email-app nav .nav .nav-item {
+  position: relative;
+}
+
+.email-app nav .nav .nav-item .nav-link,
+.email-app nav .nav .nav-item .navbar .dropdown-toggle,
+.navbar .email-app nav .nav .nav-item .dropdown-toggle {
+  color: $text-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.email-app nav .nav .nav-item .nav-link i,
+.email-app nav .nav .nav-item .navbar .dropdown-toggle i,
+.navbar .email-app nav .nav .nav-item .dropdown-toggle i {
+  width: 20px;
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.email-app nav .nav .nav-item .nav-link .badge,
+.email-app nav .nav .nav-item .navbar .dropdown-toggle .badge,
+.navbar .email-app nav .nav .nav-item .dropdown-toggle .badge {
+  float: right;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
+  .email-app {
+    flex-direction: column;
+  }
+  .email-app nav {
+    flex: 0 0 100%;
+  }
+}
+
+/* Approved/Reject order */
+.track_tbl tbody tr:first-child td.track_dot span.track_line {
+  top: 30px;
+  min-height: 25px;
+}
+.track_tbl tbody tr:last-child td.track_dot span.track_line {
+  top: 0;
+  min-height: 25px;
+  height: 10%;
+}
+
+/* Paginate */
+#paginate {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px
+}

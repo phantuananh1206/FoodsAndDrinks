@@ -1,0 +1,43 @@
+<div class="container bootdey">
+  <div class="panel panel-default panel-order">
+    <div class="panel-heading">
+      <strong><%= t("order.order_details") %></strong>
+      <div class="btn-group pull-right">
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-1">
+          <img src="https://bootdey.com/img/Content/user_3.jpg" class="media-object img-thumbnail" />
+        </div>
+        <div class="col-md-11">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="pull-right">
+                <label class="label label-danger"><%= @order.status %></label>
+              </div>
+              <span><strong><%= link_to  t("order.id",id: @order.id), user_orders_path %></strong>
+              </span> <br />
+              <%= t("order.total") %><%= number_to_currency cal_total_order(@order) %> <br />
+              <%= t("user.phone") %> <%= @order.phone_number %> <br />
+              <%= t("user.address") %> <%= @order.address %> <br />
+              <%= t("order.delivery_time") %><%= l(@order.delivery_time) %> <br />
+              <% if check_voucher?(@order) %>
+                <%= t("order.voucher") %> <%= @order.voucher.name %> <br />
+                <%= t("order.old_price") %> <%= number_to_currency cal_old_total %>(<%= t("order.discount") %> <%= number_to_currency @order.voucher.discount %>)
+              <% else %>
+                <%= t("order.voucher") %> <%= t("order.nil_voucher") %> <br />
+              <% end %>
+              <br>
+              <%= link_to t("order.view_cart"), user_order_order_details_path(current_user,@order), class: "btn btn-info btn-xs glyphicon glyphicon-usd" %>
+            </div>
+            <div class="col-md-12">
+              <%= t("order.order_time") %> <%= l(@order.created_at) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,60 @@
+<% provide(:title, t("header.home")) %>
+<% provide(:button_text, t("orders.btn_checkout")) %>
+<div class="form-checkout">
+  <h2 class="form-checkout text-center"><%= t "orders.od_title" %></h2>
+  <div class="row-info">
+    <div class="col-50">
+      <div class="containerr">
+        <%= render "info" %>
+      </div>
+    </div>
+    <div class="col-50">
+      <div class="containerr">
+        <table id="orders" class="table table-hover">
+          <thead class="font-size" >
+            <tr>
+              <th><%= t "carts.product_name" %></th>
+              <th class="text-center"><%= t "carts.quantity" %></th>
+              <th class="text-center"><%= t "carts.price" %></th>
+              <th class="text-center"><%= t "carts.subtotal" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <h3 class="text-center" style="color: red">
+            <%= render partial: "orders/od_row", collection: @order.order_details, as: :od %>
+            </h3>
+          </tbody>
+        </table>
+        <hr>
+        <div><%= t "carts.total_price" %>
+         <span class="price" style="color:black">
+            <%= number_to_currency total_price_order %>
+          </span>
+        </div>
+        <hr>
+        <div class="voucher"><%= t "voucher.title" %>
+          <%= form_tag(new_order_path, method: :post, remote: true) do %>
+            <%= text_field(:voucher, @name) %>
+            <%= button_tag(type: "submit", data: {confirm: t("voucher.apply_vou")}, class: "btn btn-outline-primary btn-sm") do %>
+              <%= t "voucher.btn_voucher" %>
+            <% end %>
+          <% end %>
+        </div>
+          <%= form_tag(new_order_path, method: :delete, remote: true) do %>
+            <%= button_tag(type: "submit", data: {confirm: t("voucher.cancel_vou")}, class: "btn btn-outline-primary btn-sm cancel_voucher") do %>
+              <%= t "voucher.btn_cancel" %>
+            <% end %>
+          <% end %>
+          <div class="message">
+            <%= render "orders/message" %>
+          </div>
+        <hr>
+        <div class= "total">
+          <h5 id="total_price">
+            <%= render "orders/total_price" %>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
