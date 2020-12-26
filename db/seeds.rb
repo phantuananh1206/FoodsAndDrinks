@@ -5,14 +5,6 @@ User.create!(name: "Admin",
   role: 0
 )
 
-User.create!(name: "DiemQuynh",
-  email: "diemquynhlt21@gmail.com",
-  password: "123123",
-  password_confirmation: "123123",
-  address: "Da Nang",
-  phone_number: "0783583361"
-)
-
 #User
 30.times do |n|
   User.create!(

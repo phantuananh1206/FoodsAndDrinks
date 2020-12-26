@@ -1,4 +1,18 @@
+validation:
+  number:
+    zero: 0
+    six: 6
+  user:
+    name_max: 50
+    email_max: 255
+    pass_min: 6
 page:
   per_page: 8
 product:
   min_quantity: 1
+rspec:
+  validation:
+    user:
+      name_max: 50
+      email_max: 255
+      pass_min: 6

@@ -17,12 +17,12 @@ class OrderDetail < ApplicationRecord
   def product_present
     return if product
 
-    errors.add(:product, t("carts.product_not_valid"))
+    errors.add(:product, I18n.t("carts.product_not_valid"))
   end
 
   def order_present
     return if order
 
-    errors.add(:order, t("carts.order_not_valid"))
+    errors.add(:order, I18n.t("carts.order_not_valid"))
   end
 end
