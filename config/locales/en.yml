@@ -50,6 +50,7 @@ en:
     fullname: "Full Name"
     password: "Password"
     password_comfirmation: "Password confirmation"
+    pass: "****************"
   views:
     pagination:
       first: "« FIRST"
@@ -197,3 +198,36 @@ en:
     validate_2: " must contain at least 1 lowercase"
     validate_3: " must contain special character"
     validate_4: " must contain at least one number"
+  account:
+    not_activated: "Account not activated!"
+    active_account: "Please check your email to activate your account."
+    account_activated: "Account activated!"
+    invalid: "Invalid activation link"
+    password:
+      instructions: "Email sent with password reset instructions"
+      not_found: "Email address not found"
+      not_empty: "can't be empty"
+      reset: "Password has been reset."
+      expired: "Password reset has expired."
+      user_not_found: "User not found"
+      user_not_valid: "User not valid"
+      forgot_password_title: "Forgot password"
+      submit: "Submit"
+      email: "Enter your email"
+      reset_password_title: "Reset password"
+      update_password: "Update password"
+  mailers:
+    activation: "Account activation"
+    password_reset: "Password reset"
+  user_mailer:
+    account_activation:
+      please_activate: "Please activate account!"
+      activate: "Activate"
+      hi: "Hi"
+      messages: "Please click on the link below to activate account"
+    password_reset:
+      guide: "To reset your password click the link below:"
+      reset_password: "Reset password"
+      expire: "This link will expire in two hours."
+      conditional: "If you did not request your password to be reset, "
+      message: "please ignore this email and your password will stay as it is."

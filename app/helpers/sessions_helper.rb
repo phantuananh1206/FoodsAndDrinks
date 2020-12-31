@@ -79,4 +79,15 @@ module SessionsHelper
   def check_user_admin?
     current_user.admin?
   end
+
+  def check_user_activated? user
+    if user.activated?
+      log_in user
+      remember_me user
+      redirect_back_or user
+    else
+      flash[:warning] = t "account.not_activated"
+      redirect_to root_path
+    end
+  end
 end

@@ -1,0 +1,20 @@
+<% provide :title, t("account.password.forgot_password_title") %>
+<div class="container reset-password">
+  <div class="row">
+    <div class="col-md-12 col-md-offset-12">
+      <div class="text-center">
+        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"  width="180" class="img-thumbnail logo img-circle">
+          <div>
+            <h1><%= t "account.password.forgot_password_title" %></h1>
+          </div>
+          <div class="panel-body">
+            <%= form_for :password_reset, url: password_resets_path do |f| %>
+              <%= f.label :email %>
+              <%= f.email_field :email, class: "form-control", placeholder: t("account.password.email") %>
+              <%= f.submit t("account.password.submit"), class: "btn btn-lg btn-primary btn-block submit-reset" %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

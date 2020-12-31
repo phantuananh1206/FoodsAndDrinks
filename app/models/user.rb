@@ -3,7 +3,7 @@ class User < ApplicationRecord
   VALID_PHONE_REGEX = /\A\d[0-9]{9}\z/.freeze
   PW = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/.freeze
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   has_many_attached :images
   has_many :ratings, dependent: :destroy
@@ -17,7 +17,9 @@ class User < ApplicationRecord
             length: {maximum: Settings.validation.user.email_max},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: true
-  validates :phone_number, format: {with: VALID_PHONE_REGEX}, presence: true
+  validates :phone_number, format: {with: VALID_PHONE_REGEX},
+            length: {minimum: Settings.validation.user.phone_min},
+            uniqueness: true
   validates :password, presence: true,
             length: {minimum: Settings.validation.user.pass_min},
             allow_nil: true
@@ -26,6 +28,7 @@ class User < ApplicationRecord
   has_secure_password
 
   before_save :downcase_email
+  before_create :create_activation_digest
 
   class << self
     def digest string
@@ -59,6 +62,28 @@ class User < ApplicationRecord
     update_column :remember_digest, nil
   end
 
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.zone.now)
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < Settings.mail.expired.hours.ago
+  end
+
   def password_complexity
     return if password.blank? || password =~ PW
 
@@ -72,5 +97,10 @@ class User < ApplicationRecord
 
   def downcase_email
     email.downcase!
+  end
+
+  def create_activation_digest
+    self.activation_token = User.new_token
+    self.activation_digest = User.digest(activation_token)
   end
 end

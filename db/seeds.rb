@@ -1,8 +1,10 @@
 User.create!(name: "Admin",
   email: "admin@gmail.com",
-  password: "123123",
-  password_confirmation: "123123",
-  role: 0
+  password: "Test123@",
+  password_confirmation: "Test123@",
+  role: 0,
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 #User
@@ -10,9 +12,11 @@ User.create!(name: "Admin",
   User.create!(
     name: Faker::Name.name,
     email: "example#{n+1}@gmail.com",
-    password:"123123",
-    password_confirmation: "123123",
-    phone_number: Faker::Number.leading_zero_number(digits: 10)
+    password:"Test123@",
+    password_confirmation: "Test123@",
+    phone_number: Faker::Number.leading_zero_number(digits: 10),
+    activated: true,
+    activated_at: Time.zone.now
   )
 end
 
