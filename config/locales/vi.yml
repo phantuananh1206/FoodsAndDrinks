@@ -36,15 +36,20 @@ vi:
     google: "Đăng nhập qua google"
     facebook: "Đăng nhập qua facebook"
     forgot_password: "Quên mật khẩu?"
+    login_now: "Bạn đã có tài khoản? Đăng nhập ngay"
   user:
     please_log_in: "Vui lòng đăng nhập!"
     not_found: "Không tìm thấy người dùng"
     about_me: "Thông tin về tôi"
     name: "Tên"
-    address: "Địa chỉ: "
+    address: "Địa chỉ"
     role: "Vai trò"
     email: "Email"
-    phone: "Số điện thoại: "
+    phone: "Số điện thoại"
+    signup_success: "Chào mừng đến với Foods And Drinks"
+    fullname: "Họ và tên"
+    password: "Mật khẩu"
+    password_comfirmation: "Xác nhận mật khẩu"
   views:
     pagination:
       first: "« ĐẦU TIÊN"
@@ -187,3 +192,8 @@ vi:
     already: "Bạn đã đánh giá sản phẩm này rồi"
     success: "Cảm ơn đánh giá của bạn"
     fail: "Đánh giá thất bại"
+  pass_validate:
+     validate_1: " phải chứa ít nhất 1 chữ hoa"
+     validate_2: " phải chứa ít nhất 1 chữ thường"
+     validate_3: " phải chứa ký tự đặc biệt"
+     validate_4: " phải chứa ít nhất một số"

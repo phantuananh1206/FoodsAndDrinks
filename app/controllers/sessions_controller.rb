@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
       log_in user
+      remember_me user
       redirect_back_or user
     else
       flash.now[:danger] = t("sessions.show_error")

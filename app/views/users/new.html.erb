@@ -1,0 +1,38 @@
+<div class="card user-signup">
+  <article class="card-body form-signup">
+      <h4 class="card-title mb-4 mt-1"><%= t "sessions.sign_up" %></h4>
+    <p>
+      <a href="" class="btn btn-block btn-outline-info"><i class="fa fa-google icon"></i><%= t "sessions.google" %></a>
+      <a href="" class="btn btn-block btn-outline-primary"><i class="fa fa-facebook icon"></i><%= t "sessions.facebook" %></a>
+    </p>
+    <hr>
+    <%= form_for @user do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control", placeholder: t("user.fullname") %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email, class: "form-control", placeholder: t("user.email") %>
+      </div>
+      <div class="form-group">
+        <%= f.telephone_field :phone_number, class: "form-control", placeholder: t("user.phone") %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password, class: "form-control", placeholder: t("user.password") %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("user.password_comfirmation") %>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.submit t("sessions.sign_up"), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-12 text-center">
+          <%= link_to  t("sessions.login_now"), login_path, class: "big" %>
+        </div>
+    <% end %>
+  </article>
+</div>
