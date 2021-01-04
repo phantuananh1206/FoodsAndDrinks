@@ -3,7 +3,11 @@
     <div class="row align-items-center flex-row-reverse">
       <div class="col-lg-6">
         <div class="about-text go-to">
-          <%= link_to t("order.order_history"),user_orders_path(current_user), class: "btn btn-lg btn-primary" %>
+          <%
+=begin%>
+ <%= link_to t("order.order_history"),user_orders_path(current_user), class: "btn btn-lg btn-primary" %>
+<%
+=end%>
           <h3 class="dark-color"><%= t "user.about_me" %></h3>
           <div class="row about-list">
             <div class="col-md-6">

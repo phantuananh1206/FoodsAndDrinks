@@ -103,25 +103,25 @@ $lightgrey: lightgrey;
   box-sizing: border-box;
 }
 
-.form-login {
+.form-login, .form-signup{
   margin-left: 350px;
   max-width: 350px;
 }
 
 @media only screen and (max-width:990px) {
-  .form-login {
+  .form-login, .form-signup{
     margin-left: 200px;
   }
 }
 
-.user-login input, textarea, select, .uneditable-input {
+.user-login input, textarea, select, .uneditable-input, .user-signup input, textarea, select{
   border: 1px solid $border-color;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
-.user-login input {
+.user-login input, .user-signup input {
   height: auto !important;
 }
 
@@ -980,4 +980,19 @@ span.price {
   display: flex;
   justify-content: center;
   margin-top: 25px
+}
+
+/* errors messages */
+#error_explanation {
+  color: red;
+  ul {
+  color: red;
+  margin: 0 0 30px;
+  }
+}
+
+.field_with_errors {
+  .erros-messages {
+  color: red;
+  }
 }

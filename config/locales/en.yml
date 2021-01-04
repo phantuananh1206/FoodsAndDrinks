@@ -36,15 +36,20 @@ en:
     google: "Login via google"
     facebook: "Login via facebook"
     forgot_password: "Forgot password?"
+    login_now: "Have an account? Login Now"
   user:
     please_log_in: "Please log in!"
     not_found: "User not found"
     about_me: "About me"
     name: "Name"
-    address: "Address: "
+    address: "Address"
     role: "Role"
     email: "Email"
     phone: "Phone Number"
+    signup_success: "Welcome to the Foods And Drinks"
+    fullname: "Full Name"
+    password: "Password"
+    password_comfirmation: "Password confirmation"
   views:
     pagination:
       first: "« FIRST"
@@ -187,3 +192,8 @@ en:
     already: "You are already rating this product"
     success: "Thank you for your rating"
     fail: "Rating fail"
+  pass_validate:
+    validate_1: " must contain at least 1 uppercase"
+    validate_2: " must contain at least 1 lowercase"
+    validate_3: " must contain special character"
+    validate_4: " must contain at least one number"
