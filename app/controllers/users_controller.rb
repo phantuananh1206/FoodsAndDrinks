@@ -8,8 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = t "user.signup_success"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:success] = t "account.active_account"
+      redirect_to root_path
     else
       render :new
     end

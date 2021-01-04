@@ -26,5 +26,6 @@ Rails.application.routes.draw do
     end
     resources :orders, only: %i(new create)
     resources :account_activations, only: %i(edit)
+    resources :password_resets, except: [:index, :destroy, :show]
   end
 end

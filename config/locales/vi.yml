@@ -50,6 +50,7 @@ vi:
     fullname: "Họ và tên"
     password: "Mật khẩu"
     password_comfirmation: "Xác nhận mật khẩu"
+    pass: "****************"
   views:
     pagination:
       first: "« ĐẦU TIÊN"
@@ -197,3 +198,36 @@ vi:
      validate_2: " phải chứa ít nhất 1 chữ thường"
      validate_3: " phải chứa ký tự đặc biệt"
      validate_4: " phải chứa ít nhất một số"
+  account:
+    not_activated: "Tài khoản chưa được kích hoạt!"
+    active_account: "Vui lòng kiểm tra email để kích hoạt tài khoản."
+    account_activated: "Tài khoản đã được kích hoạt!"
+    invalid: "Liên kết kích hoạt không hợp lệ"
+    password:
+      instructions: "Email được gửi kèm theo hướng dẫn đặt lại mật khẩu"
+      not_found: "Không tìm thấy địa chỉ email"
+      not_empty: "không thể để trống"
+      reset: "Mật khẩu đã được đặt lại."
+      expired: "Đặt lại mật khẩu đã hết hạn."
+      user_not_found: "Không tìm thấy người dùng"
+      user_not_valid: "Người dùng không hợp lệ"
+      forgot_password_title: "Quên mật khẩu"
+      submit: "Gửi"
+      email: "Nhập email"
+      reset_password_title: "Đặt lại mật khẩu"
+      update_password: "Cập nhật mật khẩu"
+  mailers:
+    activation: "Kích hoạt tài khoản"
+    password_reset: "Đặt lại mật khẩu"
+  user_mailer:
+    account_activation:
+      please_activate: "Vui lòng kích họat tài khoản!"
+      activate: "Kích hoạt"
+      hi: "Chào"
+      messages: "Vui lòng nhấn vào link bên dưới để kích hoạt tài khoản"
+    password_reset:
+      guide: "Để đặt lại mật khẩu của bạn, hãy nhấp vào liên kết bên dưới:"
+      reset_password: "Đặt lại mật khẩu"
+      expire: "Liên kết này sẽ hết hạn sau hai giờ."
+      conditional: "Nếu bạn không yêu cầu đặt lại mật khẩu của mình, "
+      message: "vui lòng bỏ qua email này và mật khẩu của bạn sẽ vẫn như cũ."
