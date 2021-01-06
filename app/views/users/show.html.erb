@@ -8,7 +8,10 @@
  <%= link_to t("order.order_history"),user_orders_path(current_user), class: "btn btn-lg btn-primary" %>
 <%
 =end%>
-          <h3 class="dark-color"><%= t "user.about_me" %></h3>
+          <div class="user-custom">
+            <h3 class="dark-color"><%= t "user.about_me" %></h3>
+            <%= link_to "", edit_user_path(current_user), class: "fas fa-user-edit icon-custom" %>
+          </div>
           <div class="row about-list">
             <div class="col-md-6">
               <div class="media">

@@ -14,7 +14,7 @@ en:
     register: "Register"
     account: "Account"
     profile: "Profile"
-    settings: "Settings"
+    settings: "Change password"
     log_out: "Log out"
     page_admin: "Admin page"
   footer:
@@ -231,3 +231,14 @@ en:
       expire: "This link will expire in two hours."
       conditional: "If you did not request your password to be reset, "
       message: "please ignore this email and your password will stay as it is."
+  edit_user:
+    title: "Edit user"
+    header: "Update your profile"
+    save: "Save changes"
+    edit_success: "Update profile successfull !!"
+    edit_fail: "Update profile failed !!"
+    title_edit_pw: "Edit password"
+    curr_pw_lb: "Current password (*)"
+    edit_pw_success: "Changed password successful !!"
+    curr_pw_fail: "The current password is not correct ! Please re-enter password !!"
+    pw_format_fail: "Please enter the correct password format !!"

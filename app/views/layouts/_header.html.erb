@@ -53,7 +53,7 @@
                   <li><%= link_to t("header.page_admin"), admin_root_path, class: "dropdown-item" %></li>
                 <% end %>
                 <li><%= link_to t("header.profile"), current_user, class: "dropdown-item" %></li>
-                <li><%= link_to t("header.settings"), "#", class: "dropdown-item" %></li>
+                <li><%= link_to t("header.settings"), edit_password_path, class: "dropdown-item" %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to t("header.log_out"), logout_path, method: "delete", class: "dropdown-item" %>

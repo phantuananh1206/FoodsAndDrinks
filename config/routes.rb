@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get "/clear-cart", to: "carts#clear_cart", as: :clear_cart
     post "/orders/new", to: "orders#voucher"
     delete "/orders/new", to: "orders#cancel_voucher"
+    get "/edit_password", to: "users#edit_password"
+    patch "/edit_password", to: "users#update_password"
     resources :products, only: :show do
       resources :ratings, only: %i(index create)
     end
@@ -27,5 +29,6 @@ Rails.application.routes.draw do
     resources :orders, only: %i(new create)
     resources :account_activations, only: %i(edit)
     resources :password_resets, except: [:index, :destroy, :show]
+    resources :users, only: %i(edit update)
   end
 end

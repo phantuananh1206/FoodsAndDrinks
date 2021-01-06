@@ -1006,3 +1006,34 @@ span.price {
 .submit-reset {
   margin-top: 20px;
 }
+
+/* update profile */
+.icon-custom{
+  color: $about-color;
+  font-size: 3rem;
+  margin-top: 12px;
+}
+
+.user-custom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-custom {
+  color: $color_222;
+}
+
+.form-edit-custom {
+  border-radius: 8px;
+  border-color: $border-color;
+}
+
+.edit-center{
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.image-custom {
+  padding-right: 50px;
+  width: 20%;
+}
