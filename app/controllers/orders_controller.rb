@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :logged_in_user
   before_action :load_cart_product, except: %i(show index update)
   before_action :check_voucher, only: %i(new create)
+  before_action :load_user, only: %i(create)
 
   def show; end
 
@@ -118,9 +119,11 @@ class OrdersController < ApplicationController
   end
 
   def save_success
+    @order.create_confirmation_digest
+    OrderMailer.order_confirmation(@order, @user).deliver_now
     session.delete :carts
     session.delete :voucher
-    flash[:success] = t "orders.create_success"
+    flash[:info] = t "order.confirm_order"
     redirect_to user_orders_path(current_user)
   end
 
@@ -165,5 +168,17 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name, :address,
                                   :phone_number, :delivery_time)
+  end
+
+  def user_order_params
+    params.require(:order).permit(:name, :email,
+                                  :address, :phone_number)
+  end
+
+  def load_user
+    @user = User.find_by email: params[:email]
+    return if check_current_user? @user
+
+    @user = User.new user_order_params
   end
 end

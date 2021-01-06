@@ -1,0 +1,24 @@
+<% provide(:title, t("mailers.confirm_order")) %>
+
+<div class="container">
+  <h1 class="text-center"><%= t "mailers.order_status" %></h1>
+  <hr>
+  <table id="orders" class="table table-hover">
+      <tr>
+        <th><%= t "order.order_status" %></th>
+        <th><%= t "carts.total_price" %></th>
+        <th><%= t "order.delivery_time" %></th>
+      </tr>
+      <tr>
+        <td><%= @order.status %></td>
+        <td><%= number_to_currency @order.total_price_order(@order) %></td>
+        <td><%= l @order.delivery_time, format: :short %></td>
+      </tr>
+  </table>
+  <hr>
+  <div class="text-center">
+    <%= link_to root_path, class: "btn btn-primary" do %>
+      <i class="fa fa-shopping-cart"><strong><%= t("carts.continue_shopping") %></strong></i>
+    <% end %>
+  </div>
+</div>

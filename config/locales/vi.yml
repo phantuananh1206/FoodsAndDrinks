@@ -110,9 +110,14 @@ vi:
     receiver_address: "Địa chỉ người nhận"
     receiver_phone: "Số điện thoại người nhận"
     order_date: "Ngày đặt"
-    status_order: "Tình trạng đơn hàng"
     total_price: "Tổng tiền"
     action: "Hành động"
+    confirm_order: "Vui lòng kiểm tra email để xác nhận đơn hàng"
+    confirm_expired: "Xác nhận đơn hàng đã hết hiệu lực"
+    confirm_success: "Xác nhận thành công. Cảm ơn bạn!"
+    your_order: "Đơn đặt hàng của bạn"
+    order_status: "Tình trạng đơn hàng"
+    delivery_time: "Delivery time"
   search:
     title: "Tìm kiếm"
     result_search: "Kết quả tìm kiếm"
@@ -141,6 +146,7 @@ vi:
     delete_success: "Xóa sản phẩm thành công"
     update_success: "Cập nhật thành công"
     delete_fail: "Xóa thành công"
+    continue_shopping: "Tiếp tục mua sắm"
   errors:
     the_form_contains:
       zero: "Không có lỗi"
@@ -172,6 +178,7 @@ vi:
     create_fail: "Tạo đơn hàng thất bại !"
     create_od_fail: "Tạo chi tiết đơn hàng thất bại !"
     create_success: "Tạo đơn hàng thành công !"
+    discount: "Khuyến mãi"
   voucher:
     title: "Mã giảm giá"
     invalid: "Mã giảm giá không hợp lệ !!"
@@ -208,7 +215,7 @@ vi:
       not_found: "Không tìm thấy địa chỉ email"
       not_empty: "không thể để trống"
       reset: "Mật khẩu đã được đặt lại."
-      expired: "Đặt lại mật khẩu đã hết hạn."
+      expired: "Đặt lại mật khẩu đã hết hiệu lực."
       user_not_found: "Không tìm thấy người dùng"
       user_not_valid: "Người dùng không hợp lệ"
       forgot_password_title: "Quên mật khẩu"
@@ -219,6 +226,13 @@ vi:
   mailers:
     activation: "Kích hoạt tài khoản"
     password_reset: "Đặt lại mật khẩu"
+    confirm_order: "Xác nhận đơn hàng"
+    user_name: "Tên người dùng: "
+    order_date: "Ngày đặt hàng: "
+    delivery_time: "Ngày giao hàng: "
+    order_status: "Tình trạng đơn hàng: "
+    user_address: "Địa chỉ: "
+    thank_you: "Cảm ơn bạn rất nhiều!"
   user_mailer:
     account_activation:
       please_activate: "Vui lòng kích họat tài khoản!"
@@ -228,7 +242,7 @@ vi:
     password_reset:
       guide: "Để đặt lại mật khẩu của bạn, hãy nhấp vào liên kết bên dưới:"
       reset_password: "Đặt lại mật khẩu"
-      expire: "Liên kết này sẽ hết hạn sau hai giờ."
+      expire: "Liên kết này sẽ hết hiệu lực sau hai giờ."
       conditional: "Nếu bạn không yêu cầu đặt lại mật khẩu của mình, "
       message: "vui lòng bỏ qua email này và mật khẩu của bạn sẽ vẫn như cũ."
   edit_user:

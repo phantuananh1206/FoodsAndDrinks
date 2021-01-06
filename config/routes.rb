@@ -30,5 +30,6 @@ Rails.application.routes.draw do
     resources :account_activations, only: %i(edit)
     resources :password_resets, except: [:index, :destroy, :show]
     resources :users, only: %i(edit update)
+    resources :order_confirmations, only: %i(edit)
   end
 end

@@ -8,6 +8,16 @@ User.create!(name: "Admin",
   activated_at: Time.zone.now
 )
 
+User.create!(name: "TuanAnh",
+  email: "phantuananhltt@gmail.com",
+  password: "Test123@",
+  password_confirmation: "Test123@",
+  phone_number: "0396355253",
+  role: 0,
+  activated: true,
+  activated_at: Time.zone.now
+)
+
 #User
 30.times do |n|
   User.create!(
@@ -48,7 +58,7 @@ end
 # Vouchers
 4.times do |n|
   Voucher.create!(
-    name: Faker::Commerce.promotion_code,
+    name: "Voucher#{n+1}",
     discount: Faker::Number.decimal(l_digits: 1, r_digits: 2),
     condition:Faker::Number.decimal(l_digits: 2)
   )
