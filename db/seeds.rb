@@ -2,6 +2,7 @@ User.create!(name: "Admin",
   email: "admin@gmail.com",
   password: "Test123@",
   password_confirmation: "Test123@",
+  phone_number: "0123456789",
   role: 0,
   activated: true,
   activated_at: Time.zone.now

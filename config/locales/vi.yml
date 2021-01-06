@@ -14,7 +14,7 @@ vi:
     register: "Đăng ký"
     account: "Tài khoản"
     profile: "Hồ sơ"
-    settings: "Cài đặt"
+    settings: "Thay đổi mật khẩu"
     log_out: "Đăng xuất"
     page_admin: "Trang quản trị"
   footer:
@@ -231,3 +231,14 @@ vi:
       expire: "Liên kết này sẽ hết hạn sau hai giờ."
       conditional: "Nếu bạn không yêu cầu đặt lại mật khẩu của mình, "
       message: "vui lòng bỏ qua email này và mật khẩu của bạn sẽ vẫn như cũ."
+  edit_user:
+    title: "Chỉnh sửa"
+    header: "Cập nhật thông tin cá nhân"
+    save: "Lưu thay đổi"
+    edit_success: "Cập nhật hồ sơ thành công !!"
+    edit_fail: "Cập nhật hồ sơ không thành công !!"
+    title_edit_pw: "Thay đổi mật khẩu"
+    curr_pw_lb: "Mật khẩu hiện tại (*)"
+    edit_pw_success: "Thay đổi mật khẩu thành công !!"
+    curr_pw_fail: "Mật khẩu hiện tại không đúng ! Vui lòng nhập lại mật khẩu !!"
+    pw_format_fail: "Vui lòng nhập đúng định dạng mật khẩu !!"
