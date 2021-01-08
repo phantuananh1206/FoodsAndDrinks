@@ -90,4 +90,8 @@ module SessionsHelper
       redirect_to root_path
     end
   end
+
+  def check_current_user? user
+    user == current_user
+  end
 end

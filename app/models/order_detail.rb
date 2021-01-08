@@ -12,6 +12,10 @@ class OrderDetail < ApplicationRecord
 
   delegate :quantity, :name, to: :product, prefix: true
 
+  def subtotal
+    price * quantity
+  end
+
   private
 
   def product_present

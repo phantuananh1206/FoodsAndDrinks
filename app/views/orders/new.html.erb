@@ -51,7 +51,7 @@
         <hr>
         <div class= "total">
           <h5 id="total_price">
-            <%= render "orders/total_price" %>
+            <%= render partial: "orders/total_price", collection: @orders, as: :od %>
           </h5>
         </div>
       </div>

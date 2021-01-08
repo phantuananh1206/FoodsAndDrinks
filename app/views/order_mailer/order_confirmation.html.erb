@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #text {
+     color:#4CAF50;
+     font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+     font-size: 150%;
+     font-style: inherit
+   }
+   #tittle {
+     color:#4CAF50;
+     text-align:center;
+     font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+     font-size: 200%;
+     font-style: italic
+   }
+   #mail_order {
+     font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+   }
+
+   #mail_order td, #mail_order th {
+     border: 1px solid #ddd;
+     padding: 8px;
+   }
+
+   #mail_order th {
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: left;
+     background-color: #4CAF50;
+     color: white;
+   }
+ </style>
+</head>
+<body>
+  <h2 id="tittle"><%= t "order.your_order" %></h2>
+  <p id="text">
+    <%= t "mailers.user_name" %> <%= @user.name %>
+  </p>
+  <p id="text">
+    <%= t "mailers.order_date" %> <%= @order.created_at %>
+  </p>
+  <p id="text">
+    <%= t "mailers.delivery_time" %> <%= @order.delivery_time %>
+  </p>
+  <p id="text">
+    <%= t "mailers.user_address" %> <%= @user.address %>
+  </p>
+  <p id="text">
+    <%= t "mailers.order_status" %> <%= @order.status %>
+  </p>
+  <br>
+  <table id="mail_order" >
+    <tr>
+      <th><%= t "carts.product_name" %></th>
+      <th><%= t "carts.quantity" %></th>
+      <th><%= t "carts.price" %></th>
+      <th><%= t "carts.subtotal" %></th>
+    </tr>
+    <tr>
+      <%= render partial: "order_mailer/od_row", collection: @order.order_details, as: :od %>
+    </tr>
+    <tr style="font-weight:bold" >
+      <td style="text-align:right" colspan="3" >
+        <%= t "carts.total_price" %>
+      </td>
+      <td><%= number_to_currency @order.total_price %></td>
+    </tr>
+    <tr style="font-weight:bold" >
+      <td style="text-align:right" colspan="3" >
+        <%= t "orders.discount" %>
+      </td>
+        <% if @order.voucher %>
+          <%= number_to_currency @order.voucher.discount %>
+        <% else %>
+          <%= number_to_currency 0 %>
+        <% end %>
+    </tr>
+    <tr style="font-weight:bold" >
+      <td style="text-align:right" colspan="3" >
+        <%= t "orders.total_od" %>
+      </td>
+      <td><%= number_to_currency @order.total_price_order(@order) %></td>
+    </tr>
+  </table>
+  <p id="text" style="text-align:center" ><%= t "mailers.thank_you" %></p>
+  <h4 style="text-align:center">
+    <%= link_to t("mailers.confirm_order"), edit_order_confirmation_url(id: @order.id, email: @user.email, token: @order.confirmation_token, user_id: @order.user_id) %>
+  </h4>
+</body>
+</html>

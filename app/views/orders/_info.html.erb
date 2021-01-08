@@ -12,9 +12,9 @@
       <%= f.text_field :address, class: "form-control", value: current_user.address %>
       <%= f.label :phone_number, t("orders.info_ship.phone_number"), class: "info-add" %>
       <%= f.telephone_field :phone_number, class: "form-control", value: current_user.phone_number %>
-      <div class="time-delivey">
+      <div class="time-delivery">
         <%= f.label :delivery_time, t("orders.info_ship.delivery_time"), class:"delivery" %>
-        <%= f.date_field(:delivery_time, {min: Date.today, value: Date.today}) %>
+        <%= f.datetime_field(:delivery_time, {min: Time.now + 1200, max: Time.now + 172800}) %>
       </div>
       <%= f.submit yield(:button_text), class: "btn-checkout" %>
     </div>

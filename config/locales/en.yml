@@ -110,9 +110,14 @@ en:
     receiver_address: "Receiver address"
     receiver_phone: "Receiver phone"
     order_date: "Order date"
-    status_order: "Status order"
     total_price: "Total price"
     action: "Action"
+    confirm_order: "Please check your email to confirm your order"
+    confirm_expired: "Confirm order has expired"
+    confirm_success: "Confirm success. Thank you!"
+    your_order: "Your order"
+    order_status: "Order status"
+    delivery_time: "Delivery time"
   search:
     title: "Search"
     result_search: "Result of search"
@@ -141,6 +146,7 @@ en:
     delete_success: "Deleted Success"
     update_success: "Updated Success"
     delete_fail: "Deleted Fail"
+    continue_shopping: "Continue to shopping"
   errors:
     the_form_contains:
       zero: "No error"
@@ -172,6 +178,7 @@ en:
     create_fail: "Create order failed!"
     create_od_fail: "Create order detail failed !!"
     create_success: "Create order successfully"
+    discount: "Discount"
   voucher:
     title: "Voucher"
     invalid: "Voucher is invalid!"
@@ -219,6 +226,13 @@ en:
   mailers:
     activation: "Account activation"
     password_reset: "Password reset"
+    confirm_order: "Confirm order"
+    user_name: "User name: "
+    order_date: "Order date: "
+    delivery_time: "Delivery time: "
+    order_status: "Order Status: "
+    user_address: "Address: "
+    thank_you: "Thank you so much!"
   user_mailer:
     account_activation:
       please_activate: "Please activate account!"
