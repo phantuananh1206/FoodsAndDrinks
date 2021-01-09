@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  enum role: {admin: 0, member: 1}
+  enum role: {admin: 0, member: 1, block: 2}
 
   validates :name, presence: true,
             length: {maximum: Settings.validation.user.name_max}
@@ -29,7 +29,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
   before_create :create_activation_digest
-
+  scope :order_by_name, ->{order name: :asc}
+  scope :not_block_user, ->{where.not role: :block}
   class << self
     def digest string
       cost = if ActiveModel::SecurePassword.min_cost

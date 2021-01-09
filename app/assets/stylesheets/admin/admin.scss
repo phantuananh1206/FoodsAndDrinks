@@ -97,3 +97,87 @@ $text-color: #151b1e;
   justify-content: center;
   margin-top: 25px
 }
+
+ /* Sidebar manage */
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+.li-custom {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-admin-custom, .item-sidebar-custom {
+  background-color: #374250 ;
+  color: #fff;
+}
+
+.item-sidebar-custom:hover {
+  background-color: #dae0e5 !important;
+}
+
+.sidebar-custom .ul-sidebar-custom>li.active>.item-sidebar-custom,
+.sidebar-custom .ul-sidebar-custom>li.active>.item-sidebar-custom:visited {
+  color: red;
+  background-color: red !important;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+// Manage Users
+.admin_user_images img{
+  width: 30px;
+  height: 30px;
+}
+
+.block {
+  background-color: #ff9f1a;
+  border-color: #ff9f1a;
+}
+
+.block:hover {
+  background-color: #b47011;
+  border-color: #b47011;
+}

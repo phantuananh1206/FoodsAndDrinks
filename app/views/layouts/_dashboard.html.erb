@@ -1,12 +1,25 @@
-<div class="container">
-  <div class="email-app">
-    <nav>
-      <%= link_to  t("admin.dashboard"), admin_root_path, class: "btn btn-danger btn-block" %>
-      <ul class="nav">
-        <li class="nav-item">
-          <%= link_to  t("admin.manage_order"), admin_orders_path, class: "nav-link" %>
-        </li>
-      </ul>
-    </nav>
+<div class=" border-right sidebar-admin-custom" id="sidebar-wrapper">
+  <div class="sidebar-heading"><%= t "admin.title" %></div>
+  <div class="list-group list-group-flush sidebar-custom">
+    <ul class="list-group list-group-flush ul-sidebar-custom">
+      <li class="li-custom ">
+        <%= link_to t("admin.db_order_manage"), admin_orders_path, class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+      <li class="li-custom ">
+        <%= link_to t("admin.db_category_manage"), "#", class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+      <li class="li-custom ">
+        <%= link_to t("admin.db_product_manage"), "#", class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+      <li class="li-custom ">
+        <%= link_to t("admin.db_user_manage"), admin_users_path, class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+      <li class="li-custom ">
+        <%= link_to t("admin.db_statistic_manage"), "#", class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+      <li class="li-custom ">
+        <%= link_to t("admin.db_overview_manage"), "#", class: "list-group-item list-group-item-action  item-sidebar-custom"%>
+      </li>
+    </ul>
   </div>
 </div>
