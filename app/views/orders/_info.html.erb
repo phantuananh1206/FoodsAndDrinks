@@ -7,7 +7,7 @@
       <%= f.label :name, t("orders.info_ship.name") %>
       <%= f.text_field :name, class: "form-control", value: current_user.name %>
       <%= f.label :email, t("orders.info_ship.email"), class: "info-add" %>
-      <%= f.email_field :email, class: "form-control", value: current_user.email %>
+      <%= f.email_field :email, class: "form-control", value: current_user.email , disabled: true %>
       <%= f.label :address, t("orders.info_ship.address"), class: "info-add" %>
       <%= f.text_field :address, class: "form-control", value: current_user.address %>
       <%= f.label :phone_number, t("orders.info_ship.phone_number"), class: "info-add" %>

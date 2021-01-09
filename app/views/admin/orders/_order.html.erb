@@ -6,7 +6,18 @@
   <td><%= order.phone_number %></td>
   <td><%= order.delivery_time %></td>
   <td><%= order.status %></td>
+  <td><%= order.total_price %></td>
+  <td>
+    <% if order.voucher %>
+      <%= number_to_currency order.voucher.discount %>
+    <% else %>
+      <%= number_to_currency 0 %>
+    <% end %>
+  </td>
   <td><%= number_to_currency cal_total_order(order) %></td>
+  <td>
+    <%= link_to t("order.view_detail"), user_order_order_details_path(order.user_id, order), class: "btn btn-info btn-xs glyphicon glyphicon-usd" %>
+  </td>
   <td>
     <% if order.waiting? %>
       <%= link_to t("order.accept"), admin_order_path(id: order.id, status: Order.statuses[:accepted]), method: :patch, class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>

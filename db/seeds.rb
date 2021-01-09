@@ -12,7 +12,7 @@ User.create!(name: "TuanAnh",
   email: "phantuananhltt@gmail.com",
   password: "Test123@",
   password_confirmation: "Test123@",
-  phone_number: "0396355253",
+  phone_number: "0987654321",
   role: 0,
   activated: true,
   activated_at: Time.zone.now

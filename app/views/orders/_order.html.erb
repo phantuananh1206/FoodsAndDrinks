@@ -3,9 +3,12 @@
     <div class="pull-right"><label class="label label-danger"><%= order.status %></label></div>
     <span><strong><%= link_to  t("order.id",id: order.id),user_order_path(current_user,order) %></strong></span> <br />
     <%= t("order.total") %> <%= number_to_currency cal_total_order(order) %> <br />
-    <%= link_to t("order.submit"), user_order_path(id: order.id, status: Order.statuses[:delivered]), method: :patch, class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>
-    <%= link_to t("order.cancel"), user_order_path(id: order.id, status: Order.statuses[:canceled]), method: :patch, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
-    <%= link_to t("order.view"), user_order_path(current_user,order), class: "btn btn-info btn-xs glyphicon glyphicon-usd" %>
+    <% if order.shipping? %>
+      <%= link_to t("order.submit"), user_order_path(id: order.id, status: Order.statuses[:delivered]), method: :patch, class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>
+    <% elsif order.waiting? %>
+      <%= link_to t("order.cancel"), user_order_path(id: order.id, status: Order.statuses[:canceled]), method: :patch, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+    <% end %>
+      <%= link_to t("order.view"), user_order_path(current_user, order), class: "btn btn-info btn-xs glyphicon glyphicon-usd" %>
   </div>
   <div class="col-md-12"><%= t("order.order_time") %><%= l(order.created_at) %></div>
 </div>

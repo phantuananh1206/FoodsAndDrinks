@@ -10,6 +10,8 @@ gem "bootstrap", "~> 4.0.0"
 gem "bootstrap-kaminari-views"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "config"
+gem "daemons"
+gem "delayed_job_active_record"
 gem "execjs"
 gem "faker", git: "https://github.com/faker-ruby/faker.git",
               branch: "master"

@@ -91,7 +91,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel_order
-    if @order.accepted?
+    if @order.waiting?
       Order.transaction do
         @order.cancel
         flash[:success] = t "order.status_success"
@@ -121,6 +121,8 @@ class OrdersController < ApplicationController
   def save_success
     @order.create_confirmation_digest
     OrderMailer.order_confirmation(@order, @user).deliver_now
+    delayed_job = @order.delay(run_at: Settings.mail.expired.hours.from_now)
+                        .order_confirm_expired?
     session.delete :carts
     session.delete :voucher
     flash[:info] = t "order.confirm_order"

@@ -1,5 +1,9 @@
 <ul>
   <br>
-  <%= link_to t("order.back"), user_order_path(current_user,@order), class: "btn btn-info" %>
+  <% if check_user_admin? %>
+    <%= link_to t("order.back"), admin_orders_path, class: "btn btn-info" %>
+  <% else %>
+    <%= link_to t("order.back"), user_order_path(current_user,@order), class: "btn btn-info" %>
+  <% end %>
   <%= render @order_details %>
 </ul>

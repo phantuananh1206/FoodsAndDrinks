@@ -85,9 +85,10 @@ module SessionsHelper
       log_in user
       remember_me user
       redirect_back_or user
+      flash[:success] = t "user.login_success"
     else
-      flash[:warning] = t "account.not_activated"
-      redirect_to root_path
+      flash.now[:warning] = t "account.not_activated"
+      render :new
     end
   end
 

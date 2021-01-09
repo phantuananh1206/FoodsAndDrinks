@@ -10,7 +10,10 @@
         <th><%= t "order.receiver_phone" %></th>
         <th><%= t "order.order_date" %></th>
         <th><%= t "order.order_status" %></th>
+        <th><%= t "order.info_ship.subtotal" %></th>
+        <th><%= t "order.info_ship.voucher" %></th>
         <th><%= t "order.total_price" %></th>
+        <th><%= t "order.detail" %></th>
         <th><%= t "order.action" %></th>
       </tr>
     </thead>
@@ -19,6 +22,6 @@
     </tbody>
   </table>
   <div id="paginate">
-    <%= will_paginate @orders, theme: "twitter-bootstrap-3" %>
+    <%= will_paginate @orders %>
   </div>
 </div>
