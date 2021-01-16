@@ -1,0 +1,21 @@
+<div class="p-4">
+  <h1><%= t "admin.user.title" %></h1>
+  <h3><%= t "admin.user.total_user" %>: <%= User.all.size %> </h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t "admin.user.avt" %></th>
+        <th><%= t "admin.user.name" %></th>
+        <th><%= t "admin.user.email" %></th>
+        <th><%= t "admin.user.phone" %></th>
+        <th><%= t "admin.user.control" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+  <div id="paginate">
+    <%= will_paginate @users, class: "btn btn-success" %>
+  </div>
+</div>

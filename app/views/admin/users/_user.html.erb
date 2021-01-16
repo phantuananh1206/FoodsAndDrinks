@@ -1,0 +1,19 @@
+<% unless user.admin? %>
+  <tr class="active">
+    <td class="admin_user_images">
+      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+    </td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone_number %></td>
+    <td>
+      <%= link_to t("admin.edit"), edit_admin_user_path(user), class: "btn btn-success btn-xs glyphicon glyphicon-ok" %>
+      <%= link_to t("admin.delete"), admin_user_path(user, role: :member), method: :delete, class: "btn btn-danger btn-xs glyphicon glyphicon-trash" %>
+      <% if user.member? %>
+        <%= link_to t("admin.block"), admin_user_path(user, role: :block), method: :delete, class: "btn btn-info block" %>
+      <% else %>
+        <%= link_to t("admin.unblock"), admin_user_path(user, role: :unblock), method: :delete, class: "btn btn-info" %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

@@ -14,11 +14,14 @@
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
-    <div class="col-md-3">
+    <div class="d-flex" id="wrapper">
       <%= render "layouts/dashboard" %>
-    </div>
-    <div class="col-md-9">
-      <%= yield %>
+      <div id="page-content-wrapper">
+        <%= render "layouts/toggle_menu" %>
+        <div class="container-fluid">
+          <%= yield %>
+        </div>
+      </div>
     </div>
     <%= render "layouts/footer" %>
   </body>

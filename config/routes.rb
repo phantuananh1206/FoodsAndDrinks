@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     namespace :admin do
       root "base#home"
       resources :orders, only: %i(index update)
+      resources :users
     end
     resources :orders, only: %i(new create)
     resources :account_activations, only: %i(edit)
