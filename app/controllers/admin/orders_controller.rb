@@ -43,8 +43,10 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def refuse_order
-    @order.refused!
-    flash[:success] = t "order.status_success"
+    Order.transaction do
+      @order.refuse
+      flash[:success] = t "order.status_success"
+    end
   end
 
   def shipping_order

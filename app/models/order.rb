@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_PHONE_REGEX = /\A\d[0-9]{9}\z/.freeze
 
   attr_accessor :confirmation_token
@@ -11,6 +12,8 @@ class Order < ApplicationRecord
   enum status: {waiting: 0, confirmed: 1, accepted: 2, refused: 3,
                 canceled: 4, shipping: 5, delivered: 6}
 
+  validates :name, presence: true
+  validates :address, presence: true
   validates :phone_number, presence: true,
             format: {with: VALID_PHONE_REGEX}
   validates :address, presence: true
@@ -18,8 +21,10 @@ class Order < ApplicationRecord
 
   extend ActiveModel::Callbacks
   define_model_callbacks :cancel, only: :after
+  define_model_callbacks :refuse, only: :after
   after_cancel :update_quantity_product_cancel
   after_create :update_quantity_product
+  after_refuse :update_quantity_product_cancel
 
   scope :by_created_at, ->{order(delivery_time: :desc)}
   scope :orderby_od_create, ->{order(created_at: :desc)}
@@ -43,6 +48,12 @@ class Order < ApplicationRecord
   def cancel
     run_callbacks :cancel do
       canceled!
+    end
+  end
+
+  def refuse
+    run_callbacks :refuse do
+      refused!
     end
   end
 
@@ -92,12 +103,15 @@ class Order < ApplicationRecord
   def authenticated? attribute, token
     digest = send "#{attribute}_digest"
     return false unless digest
-
+s
     BCrypt::Password.new(digest).is_password? token
   end
 
   def order_confirm_expired?
     confirm_sent_at < Settings.mail.expired.hours.ago
+    Order.transaction do
+      order.cancel
+    end
   end
 
   def create_confirmation_digest
