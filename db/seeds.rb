@@ -15,7 +15,8 @@ User.create!(name: "TuanAnh",
   phone_number: "0987654321",
   role: 0,
   activated: true,
-  activated_at: Time.zone.now
+  activated_at: Time.zone.now,
+  confirmed_at: Time.zone.now
 )
 
 #User
