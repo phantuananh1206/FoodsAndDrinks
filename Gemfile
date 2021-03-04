@@ -18,6 +18,7 @@ gem "execjs"
 gem "faker", git: "https://github.com/faker-ruby/faker.git",
               branch: "master"
 gem "font-awesome-rails"
+gem "gmaps4rails"
 gem "image_processing", "1.9.3"
 gem "jbuilder", "~> 2.7"
 gem "jquery-rails"

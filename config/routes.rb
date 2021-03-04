@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :routers
   devise_for :users, skip: [:session, :password, :registration], controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   scope "(:locale)", locale: /en|vi/ do

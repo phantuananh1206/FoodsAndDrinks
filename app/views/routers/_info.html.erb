@@ -1,0 +1,28 @@
+<style type="text/css">
+ #low     { color: red;     }
+ #medium  { color: orange;  }
+ #high    { color: green;   }
+</style>
+    <b>Name:</b> <%= name %><br>
+    <% if @battery <30 %>
+        <b>Status:</b> <span id="low">Low Battery!</span><br>
+    <% elsif @status == 1 %>
+        <b>Status:</b> <span id="high">System Normal</span><br>
+    <% elsif @status == 2 %>
+        <b>Status:</b> <span id="medium">High Network Traffic</span><br>
+    <% elsif @status == 3 %>
+        <b>Status:</b> <span id="low">System Error!</span><br>
+    <% else %>
+        <b>Status:</b> <span id="low">High Network Traffic</span><br>
+    <% end %>
+
+    <% if battery <= 30 %>
+        <b>Battery:</b> <span id="low"><%= battery %>%</span><br>
+    <% else %>
+        <b>Battery:</b> <span id="high"><%= battery %>%</span><br>
+    <% end %>
+
+    <b>Last collection:</b> <%= date %><br><br>
+    <b>WiFi SSID:</b> SJSU_Premier<br>
+    <b>IP Address:</b> <%= ip %><br>
+    <b>Connected Users:</b> <%= connected %>
