@@ -111,11 +111,11 @@ class OrdersController < ApplicationController
   end
 
   def logged_in_user
-    return if logged_in?
+    # return if logged_in?
 
-    store_location
-    flash[:danger] = t "orders.log_order"
-    redirect_to login_path
+    # store_location
+    # flash[:danger] = t "orders.log_order"
+    # redirect_to login_path
   end
 
   def save_success

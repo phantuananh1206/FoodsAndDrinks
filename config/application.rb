@@ -12,5 +12,6 @@ module RubyOe39FoodAndDrink
     config.i18n.default_locale = :en
     config.factory_bot.definition_file_paths = ["custom/factories"]
     config.active_job.queue_adapter = :delayed_job
+    Rails.application.config.session_store :active_record_store
   end
 end

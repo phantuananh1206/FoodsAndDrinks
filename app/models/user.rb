@@ -1,9 +1,18 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :confirmable, :trackable, :timeoutable,
+         :lockable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_PHONE_REGEX = /\A\d[0-9]{9}\z/.freeze
   PW = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/.freeze
 
-  attr_accessor :remember_token, :activation_token, :reset_token
+  # attr_accessor :remember_token, :activation_token, :reset_token
+
+  attr_accessor :activation_token, :reset_token
 
   has_many_attached :images
   has_many :ratings, dependent: :destroy
@@ -19,13 +28,13 @@ class User < ApplicationRecord
             uniqueness: true
   validates :phone_number, format: {with: VALID_PHONE_REGEX},
             length: {minimum: Settings.validation.user.phone_min},
-            uniqueness: true
-  validates :password, presence: true,
-            length: {minimum: Settings.validation.user.pass_min},
-            allow_nil: true
-  validate :password_complexity
+            uniqueness: true, allow_nil: true
+  # validates :password, presence: true,
+  #           length: {minimum: Settings.validation.user.pass_min},
+  #           allow_nil: true
+  # validate :password_complexity
 
-  has_secure_password
+  # has_secure_password
 
   before_save :downcase_email
   before_create :create_activation_digest
@@ -92,6 +101,26 @@ class User < ApplicationRecord
     errors.add :password, I18n.t("pass_validate.validate_2")
     errors.add :password, I18n.t("pass_validate.validate_3")
     errors.add :password, I18n.t("pass_validate.validate_4")
+  end
+
+  def self.from_omniauth(auth)
+    result = User.where(email: auth.info.email).first
+    if result
+      return result
+    else
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name
+        # user.phone_number = auth.info.phone
+        user.image = auth.info.image
+        user.uid = auth.uid
+        user.provider = auth.provider
+
+        #  If you are using confirmable and the provider(s) you use validate emails
+        user.skip_confirmation!
+      end
+    end
   end
 
   private
